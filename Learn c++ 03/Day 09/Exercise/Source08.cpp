@@ -30,9 +30,6 @@ void FillMatrix(Matrix &mat) {
 bool MultiplyMatrices(Matrix u, Matrix v, Matrix* w) {
     int x = u.rows;
     int y = v.cols;
-    if (x != y) {
-        return false;
-    }
     w->rows = x;
     w->cols = y;
     w->ptr = new int* [x];
@@ -50,8 +47,17 @@ bool MultiplyMatrices(Matrix u, Matrix v, Matrix* w) {
             }
         }
     }
-    return true;
+    if (w->ptr != nullptr) {
+        return true;
+    }
+    else
+    {
+        false;
+    }
+
+        
 }
+
 
 void PrintMatrix(Matrix u) {
     for (int i = 0; i < u.rows; ++i)
@@ -63,9 +69,14 @@ void PrintMatrix(Matrix u) {
         }
 }
 
-void FreeMatrix(Matrix &u) {
-    delete[] u.ptr;
-    u.ptr = nullptr;
+void FreeMatrix(Matrix &m) {
+    
+    for (int i = 0; i < m.rows; i++) {
+        delete[] m.ptr[i];
+        m.ptr[i] = nullptr;
+    }
+    delete[] m.ptr;
+    m.ptr = nullptr;
 }
 
 int main() {

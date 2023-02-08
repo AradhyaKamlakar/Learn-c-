@@ -45,7 +45,54 @@ int EXPIMP search(int a[], int len, int ele, int occ = 1);
 
 int EXPIMP search(string str, string target, bool isCase = true, bool isWord = false);
 
-DayNumber EXPIMP dow(int day, int month, int year, DayNumber dy = Sun);
+//DayNumber EXPIMP dow(int day, int month, int year, DayNumber dy = Sun);
 
+//class Point {
+//public:
+//    int m_x;
+//    int m_y;
+//
+//public:
+//    Point(int x = 0, int y = 0);
+//
+//public:
+//    int GetX();
+//    int GetY();
+//};
 
+class EXPIMP Complex {
+public :
+    int m_R;
+    int m_I;
+
+public:
+    Complex(int x = 0, int y = 0);
+
+public:
+    int GetR();
+    int GetI();
+    Complex Add(Complex a);
+    Complex Sub(Complex a);
+    Complex Mul(Complex a);
+    Complex Div(Complex a);
+};
+
+class EXPIMP MeterConvertor {
+public:
+    MeterConvertor();
+    MeterConvertor(size_t s);
+
+public:
+    void SetM(size_t i);
+    int GetM();
+
+public:
+    double ToFoot();
+    double ToInch();
+    size_t ToMeter();
+    double ToYard();
+
+private:
+    size_t m_meter;
+};
 

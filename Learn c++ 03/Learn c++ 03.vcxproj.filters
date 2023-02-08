@@ -17,9 +17,4 @@
   <ItemGroup>
     <Text Include="Day 05\02 extern C\Notes.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Day 09\Exercise\Source08.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
 </Project>

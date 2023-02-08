@@ -252,31 +252,105 @@ int search(string str, string target, bool isCase, bool isWord) {
 	return -1;
 }
 
-DayNumber dow(int day, int month, int year, DayNumber dy) {
-	int v = 0;
+//DayNumber dow(int day, int month, int year, DayNumber dy) {
+//	int v = 0;
+//
+//	int mon;
+//	if (month > 2)
+//		mon = month;
+//	else {
+//		mon = (12 + month); 
+//	}
+//	int y = year % 100; //last two digit
+//	int c = year / 100; //first two digit
+//	int w = (day + floor((13 * (mon + 1)) / 5) + y + floor(y / 4) + floor(c / 4) + (5 * c));
+//	w = (w+6) % 7;
+//	dy = (DayNumber)w;
+// return dy;
+//}
 
-	int mon;
-	if (month > 2)
-		mon = month;
-	else {
-		mon = (12 + month); 
-	}
-	int y = year % 100; //last two digit
-	int c = year / 100; //first two digit
-	int w = (day + floor((13 * (mon + 1)) / 5) + y + floor(y / 4) + floor(c / 4) + (5 * c));
-	w = (w+6) % 7;
-	dy = (DayNumber)w;
- return dy;
+Complex::Complex(int i, int j) {
+	m_R = i;
+	m_I = j;
 }
 
-//void sortin(int a[], int len, SortOrder so) {
-//	if (so == Ascending) {
-//		sort(a, len);
-//	}
-//	else
-//	{
-//		int temp = 0;
-//		sort(a, len);
-		
-//	}
-//}
+Complex Complex::Add(Complex a) {
+	Complex w;
+	w.m_R = this->m_R + a.m_R;
+	w.m_I = this->m_I + a.m_I;
+
+	return w;
+}
+
+Complex Complex::Sub(Complex a) {
+	Complex w;
+	w.m_R = this->m_R - a.m_R;
+	w.m_I = this->m_I - a.m_I;
+
+	return w;
+}
+
+Complex Complex::Mul(Complex a) {
+	Complex w;
+	w.m_R = (this->m_R * a.m_R) - (this->m_I * a.m_I);
+	w.m_I = (this->m_I * a.m_R) + (this->m_R * a.m_I);
+
+	return w;
+
+}
+
+Complex Complex::Div(Complex a) {
+	Complex w;
+	int c = 0;
+	int b = 0;
+	c = ((this->m_R * a.m_R) + (this->m_I * a.m_I)) / ((a.m_R * a.m_R) + (a.m_I * a.m_I));
+	b = ((this->m_I * a.m_R) - (this->m_R * a.m_I)) / ((a.m_R * a.m_R) + (a.m_I * a.m_I));
+	
+	w.m_R = c;
+	w.m_I = b;
+	return w;
+}
+double result = 0.0;
+
+int Complex::GetR() {
+	return this->m_R;
+}
+
+int Complex::GetI() {
+	return this->m_I;
+}
+
+MeterConvertor::MeterConvertor() {
+	SetM(0);
+}
+
+MeterConvertor::MeterConvertor(size_t s) {
+	SetM(s);
+}
+
+void MeterConvertor::SetM(size_t s) {
+	m_meter = s;
+}
+
+int MeterConvertor::GetM() {
+	return m_meter;
+}
+
+double MeterConvertor::ToFoot() {
+	result = m_meter * 3.28084;
+	return result;
+}
+
+double MeterConvertor::ToInch() {
+	result = m_meter * 39.3701;
+	return result;
+}
+
+double MeterConvertor::ToYard() {
+	result = m_meter * 1.09361;
+	return result;
+}
+
+size_t MeterConvertor::ToMeter() {
+	return m_meter;
+}
